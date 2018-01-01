@@ -6,6 +6,8 @@
 module Data.Aeson.Lens.Examples (
       -- * Searching inside a Value
       persons
+      -- $searching
+
       -- * Pretty printing
     , pp
       -- * Re-exports
@@ -106,6 +108,12 @@ persons =
              (Data.Map.fromList [("Pluto",Dog)])
     ]
 
+{- $searching
+
+= Getting the person names
+
+-}
+
 {-|
     Pretty print a 'Value' to @stdout@.
 -}
@@ -122,3 +130,5 @@ pp = Data.ByteString.Lazy.Char8.putStrLn . encodePretty
       operator which conflicts with ('Data.Aeson.Types..=') from "Data.Aeson".
  
 -}
+
+
