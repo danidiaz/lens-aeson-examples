@@ -1,0 +1,36 @@
+-- https://jpvillaisaza.github.io/2017/03/14/minimal-cabal-files/
+name:                lens-aeson-examples
+version:             1.0.0.0
+license:             MIT
+license-file:        LICENSE
+build-type:          Simple
+cabal-version:       >=2
+
+library
+    exposed-modules:     
+        Data.Aeson.Lens.Examples
+    build-depends:       
+        base            >= 4.5 && <5,
+        aeson           >= 0.7.0.5 && <1.3,
+        aeson-pretty    >= 0.8,
+        lens            >= 4.4 && <5
+    hs-source-dirs:     
+        src
+    default-language:    
+        Haskell2010
+
+test-suite doctests
+    type:           
+        exitcode-stdio-1.0
+    hs-source-dirs: 
+        tests
+    main-is:        
+        doctests.hs
+    build-depends:
+        base            >= 4.5 && <5,
+        aeson           >= 0.7.0.5 && <1.3,
+        aeson-pretty    >= 0.8,
+        lens            >= 4.4 && <5,
+        doctest         >= 0.13
+    default-language:    
+        Haskell2010
