@@ -124,6 +124,37 @@ persons =
 >>> persons^..nth 1.key "name"._String
 ["Bob"]
 
+= Getting the names of all persons not named Bob.
+
+>>> persons^..values.key "name"._String.filtered (hasn't (only "Bob"))
+["Alice","Jim"]
+
+>>> persons^..values.key "name"._String.filtered (\name -> name /= "Bob")
+["Alice","Jim"]
+
+>>> persons^..values.key "name"._String.filtered (hasn't (only "Bob")).each
+"AliceJim"
+
+= Getting the ages of all persons not named Bob.
+
+Here the situation is a bit different: we are filtering depending on a value
+(the person's name) we are not going to extract.
+
+>>> persons^..values.filtered (hasn't (key "name"._String.only "Bob")).key "age"._Integer
+[43,51]
+
+Notice that we now filter on the person objects *directly*, and move the search
+for the name *inside* the filtering condition. Then we extract the ages from the
+filtered person objects.
+
+>>> :{
+    let noBob person = case preview (key "name"._String) person of
+            Just name | name == "Bob" -> False
+            _ -> True
+    in persons^..values.filtered noBob.key "age"._Integer
+    :}
+[43,51]
+
 -}
 
 {-|
