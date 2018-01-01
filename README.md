@@ -1,13 +1,13 @@
 # What's this?
 
-A Haskel package containing additional examples for
+A Haskell package containing additional examples for
 [lens-aeson](http://hackage.haskell.org/package/lens-aeson). It might be
 helpful for people who are not yet very familiar with
 [lens](https://hackage.haskell.org/package/lens).
 
 # How to use this package?
 
-Read the haddock documentation.
+Simple read the haddock documentation.
 
 You can also play with the examples in the *repl*, by downloading the [Git
 repo](https://github.com/danidiaz/lens-aeson-examples), building it, and
@@ -21,5 +21,4 @@ invoking
     Ok, one module loaded.
     *Data.Aeson.Lens.Examples> pp Null -- we have Data.Aeson, Data.Aeson.Lens and Control.Lens in scope
     null
-
 
