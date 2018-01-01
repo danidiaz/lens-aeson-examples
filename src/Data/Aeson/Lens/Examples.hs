@@ -119,6 +119,11 @@ persons =
 >>> persons^..values.key "name"._String
 ["Alice","Bob","Jim"]
 
+= Getting the name of the second person
+
+>>> persons^..nth 1.key "name"._String
+["Bob"]
+
 -}
 
 {-|
