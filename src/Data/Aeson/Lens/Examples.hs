@@ -112,6 +112,9 @@ persons =
 
 = Getting the person names
 
+>>> persons^.._Array.folded.key "name"._String
+["Alice","Bob","Jim"]
+
 -}
 
 {-|
