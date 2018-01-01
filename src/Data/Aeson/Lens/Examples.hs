@@ -115,17 +115,17 @@ persons =
 
 {- $searching
 
-= Getting the names of all persons
+== Getting the names of all persons
 
 >>> persons^..values.key "name"._String
 ["Alice","Bob","Jim"]
 
-= Getting the name of the second person
+== Getting the name of the second person
 
 >>> persons^..nth 1.key "name"._String
 ["Bob"]
 
-= Getting the names of all persons not named Bob.
+== Getting the names of all persons not named Bob.
 
 We use 'filtered' in together with 'hasn't' and 'only'.
 
@@ -133,7 +133,7 @@ We use 'filtered' in together with 'hasn't' and 'only'.
 hits any target.
 
 'only' is a strange 'Prism' that only matches in the case of equality,
-returning an uninformative '()'. But this is enough to use it with 'has' and
+returning an uninformative @()@. But this is enough to use it with 'has' and
 'hasn't'.
 
 >>> persons^..values.key "name"._String.filtered (hasn't (only "Bob"))
@@ -152,7 +152,7 @@ like 'Text':
 >>> persons^..values.key "name"._String.filtered (hasn't (only "Bob")).each
 "AliceJim"
 
-= Getting the ages of all persons not named Bob.
+== Getting the ages of all persons not named Bob.
 
 Here the situation is a bit different: we are filtering depending on a value
 (the person's name) that we do not want to extract.
@@ -175,7 +175,7 @@ filtered person objects.
 >>> persons^..values.filtered (noneOf (key "name"._String) (=="Bob")).key "age"._Integer
 [43,51]
 
-= Getting the names of all persons who like reading or cooking
+== Getting the names of all persons who like reading or cooking
 
 'Fold's can be pasted togeter using ('Data.Monoid.<>'), which is sometimes useful:
 
@@ -187,12 +187,12 @@ Another way of saying the same, using the 'anyOf' combinator:
 >>> persons^..values.filtered (anyOf (key "hobbies".values._String) (\t -> t=="Reading" || t=="Cooking")).key "name"._String
 ["Alice","Bob"]
 
-= Getting the names of all persons whose every pet is a dog 
+== Getting the names of all persons whose every pet is a dog 
 
 >>> persons^..values.filtered (allOf (key "pets".members._String) (=="Dog")).key "name"._String
 ["Bob","Jim"]
 
-= Getting the names of all pets
+== Getting the names of all pets
 
 Notice that the pet names are /keys/ in an object.
 
@@ -202,7 +202,7 @@ extract the object keys:
 >>> persons^..values.key "pets".members.asIndex
 ["Fido","Luna","Pluto"]
 
-= Getting the types of pets not named Luna
+== Getting the types of pets not named Luna
 
 Filtering based on object keys is done using the 'indices' function.
 

@@ -7,7 +7,7 @@ find it helpful.
 
 # How to use this package?
 
-Simple read the haddock documentation.
+Simply read the haddock documentation.
 
 You can also play with the examples in the *repl*, by downloading the [Git
 repo](https://github.com/danidiaz/lens-aeson-examples), building it, and
