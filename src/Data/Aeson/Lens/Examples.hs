@@ -196,7 +196,7 @@ Another way of saying the same, using the 'anyOf' combinator:
 
 Notice that the pet names are /keys/ in an object.
 
-'members' is an 'IndexedTraversal', and we can compose with 'asIndex' to
+'members' is an 'IndexedTraversal', and we can compose it with 'asIndex' to
 extract the object keys:
 
 >>> persons^..values.key "pets".members.asIndex
