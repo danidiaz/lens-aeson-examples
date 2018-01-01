@@ -155,6 +155,25 @@ filtered person objects.
     :}
 [43,51]
 
+= Getting the names of all persons whose every pet is a dog 
+
+>>> persons^..values.filtered (allOf (key "pets".members._String) (=="Dog")).key "name"._String
+["Bob","Jim"]
+
+= Getting the names of all pets
+
+Notice that the pet names are *keys* in an object.
+
+>>> persons^..values.key "pets".members.asIndex
+["Fido","Luna","Pluto"]
+
+= Getting the types of pets not named Luna
+
+>>> persons^..values.key "pets".members.indices (/="Luna")._String
+["Dog","Dog"]
+
+
+
 -}
 
 {-|
