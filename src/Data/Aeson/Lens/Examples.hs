@@ -2,7 +2,7 @@
 -- @lens-aeson@ doesn't provide 'Lens'es or 'Setter's, but rather 'Prism's
 -- and 'Traversal's. The reason is that 'Value' is a sum type, and we can't be
 -- sure that values always have some particular field present. (Compare with
--- tuples, which always have two components which can be targeted with '_1' and '_2'.)
+-- tuples, which always have two components that can be targeted with '_1' and '_2'.)
 --
 -- The examples in this module require the @OverloadedStrings@ extension.
 
