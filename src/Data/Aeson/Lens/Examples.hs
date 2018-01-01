@@ -129,8 +129,8 @@ persons =
 
 We use 'filtered' in together with 'hasn't' and 'only'.
 
-'has' and 'hasn't' are useful combinators that check if a 'Fold' hits or not
-hits any target.
+'has' and 'hasn't' are useful combinators that check if a 'Fold' hits or does
+not hit any targets.
 
 'only' is a strange 'Prism' that only matches in the case of equality,
 returning an uninformative @()@. But this is enough to use it with 'has' and
