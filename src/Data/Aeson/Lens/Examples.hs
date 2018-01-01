@@ -139,7 +139,7 @@ returning an uninformative @()@. But this is enough to use it with 'has' and
 >>> persons^..values.key "name"._String.filtered (hasn't (only "Bob"))
 ["Alice","Jim"]
 
-We can use simple functions as arguments to 'filtered':
+We can also use simple functions as arguments to 'filtered':
 
 >>> persons^..values.key "name"._String.filtered (\name -> name /= "Bob")
 ["Alice","Jim"]
