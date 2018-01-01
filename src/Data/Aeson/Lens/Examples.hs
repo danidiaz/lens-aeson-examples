@@ -1,6 +1,10 @@
 -- |
+-- @lens-aeson@ doesn't provide 'Lens'es or 'Setter's, but rather 'Prism's
+-- and 'Traversal's. The reason is that 'Value' is a sum type, and we can't be
+-- sure that values always have some particular field present. (Compare with
+-- tuples, which always have two components targetable with '_1' and '_2'.)
+--
 -- The examples in this module require the @OverloadedStrings@ extension.
--- 
 
 {-# LANGUAGE OverloadedStrings, DeriveGeneric, StandaloneDeriving #-}
 module Data.Aeson.Lens.Examples (
@@ -112,7 +116,7 @@ persons =
 
 = Getting the person names
 
->>> persons^.._Array.folded.key "name"._String
+>>> persons^..values.key "name"._String
 ["Alice","Bob","Jim"]
 
 -}
