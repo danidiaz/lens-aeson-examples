@@ -212,10 +212,35 @@ array. We can filter based on that:
 ["Alice","Jim"]
 
 == Matching each hobby with the index of the person in the person array
+
+As we go down a data structure, we might want to keep some record of the
+indices (keys, or array positions) that we go through.
+
+Indexed optics ('IndexedFold', 'IndexedTraversal', and so on) are aware of the
+index of each element and can supply the index to special consuming functions
+like 'itoListOf' or 'ifor'. There are also functions like 'withIndex' that
+manifest the indices without yanking us out of the lensy world. 
+
+Indexed optics can be used directly as nonindexed ones, if you don't care about
+the indices.
+
+When we compose an indexed optic with another optic using plain
+('Data.Function..') the index information is lost. But we can preserve the
+index information of the first optic with the special composition operator
+('Control.Lens.Indexed.<.').
+
 >>> itoListOf (((values<.key "hobbies")<.values)<._String) persons
 [(0,"Running"),(0,"Reading"),(1,"Surfing"),(1,"Cooking"),(1,"Reading")]
 
+__Note__: the nesting of the parentheses is sort of awkward. Is there a better
+way?
+
 == Matching each pet type with the owner's index and the pet's name
+
+When composing two indexed optics, we can preserve /both/ indices by using the
+('Control.Lens.Indexed.<.>') operator. The index of the composition becomes the
+pair of the original indices. 
+
 >>> itoListOf (((values<.key "pets")<.>members)<._String) persons
 [((0,"Fido"),"Dog"),((0,"Luna"),"Cat"),((2,"Pluto"),"Dog")]
 

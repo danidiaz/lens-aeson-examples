@@ -22,3 +22,8 @@ invoking
     *Data.Aeson.Lens.Examples> pp Null -- we have Data.Aeson, Data.Aeson.Lens and Control.Lens in scope
     null
 
+# How about an example for X?
+
+Ideas for additional examples are welcome. Just open an issue on
+[GitHub](https://github.com/danidiaz/lens-aeson-examples).
+
