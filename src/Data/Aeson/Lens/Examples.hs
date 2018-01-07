@@ -113,14 +113,30 @@ persons =
  
 == Getting the names of all persons
 
+Using 'key' to index into an 'Object'.
+
 >>> persons^..values.key "name"._String
 ["Alice","Bob","Jim"]
 
 == Getting the name of the second person
 
+Using 'nth' to index into an 'Array'.
+
 >>> persons^..nth 1.key "name"._String
 ["Bob"]
- 
+
+== Getting the names and ages of all persons
+
+Module "Control.Lens.Reified" provides the 'ReifiedFold' newtype, which has
+many useful instances. In particular, the "Applicative" instance can be used to
+extract two fields at the same time:
+
+>>> :{
+    let Fold nameAndAge = (,) <$> Fold (key "name"._String) <*> Fold (key "age"._Integer)
+    in persons^..values.nameAndAge
+    :}
+[("Alice",43),("Bob",50),("Jim",51)]
+
 == Getting the names of all persons not named Bob.
 
 We use 'filtered' in together with 'hasn't' and 'only'.
