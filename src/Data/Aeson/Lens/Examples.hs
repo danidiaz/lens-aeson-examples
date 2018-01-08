@@ -52,7 +52,7 @@ data Person = Person
 instance ToJSON Person
 
 {- $setup
->>> :set -XOverloadedStrings
+>>> :set -XOverloadedStrings -XFlexibleContexts
 -}
 
 -- | 
@@ -184,9 +184,6 @@ filtered person objects.
     :}
 [43,51]
  
->>> persons^..values.filtered (noneOf (key "name"._String) (=="Bob")).key "age"._Integer
-[43,51]
- 
 == Getting the names of all persons who like reading or cooking
 
 'Fold's can be pasted togeter using ('Data.Monoid.<>'), which is sometimes useful:
@@ -203,6 +200,14 @@ Another way of saying the same, using the 'anyOf' combinator:
 
 >>> persons^..values.filtered (allOf (key "pets".members._String) (=="Dog")).key "name"._String
 ["Bob","Jim"]
+
+== Getting the names of all persons with at least one pet whose every pet is a dog 
+
+>>> :{
+    let pets = key "pets".members
+    in persons^..values.filtered (has pets).filtered (allOf (pets._String) (=="Dog")).key "name"._String
+    :}
+["Jim"]
 
 == Getting the names of all pets
 
