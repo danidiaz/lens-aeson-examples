@@ -62,7 +62,6 @@ instance ToJSON Person
 --     {
 --         "age": 43,
 --         "hobbies": [
---          ^
 --             "Running",
 --             "Reading"
 --         ],
