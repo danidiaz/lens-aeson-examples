@@ -27,3 +27,8 @@ invoking
 Ideas for additional examples are welcome. Just open an issue on
 [GitHub](https://github.com/danidiaz/lens-aeson-examples).
 
+# See also
+
+[this somewhat involved example that uses `partsOf`](https://github.com/josevalim/nested-data-structure-traversal/blob/master/haskell/lens-parts-of.hs)
+
+
