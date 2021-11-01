@@ -61,36 +61,36 @@ instance ToJSON Person
 -- [
 --     {
 --         "age": 43,
+--         "hobbies": [
+--          ^
+--             "Running",
+--             "Reading"
+--         ],
 --         "name": "Alice",
 --         "pets": {
 --             "Fido": "Dog",
 --             "Luna": "Cat"
---         },
---         "hobbies": [
---             "Running",
---             "Reading"
---         ]
+--         }
 --     },
 --     {
 --         "age": 50,
---         "name": "Bob",
---         "pets": {},
 --         "hobbies": [
 --             "Surfing",
 --             "Cooking",
 --             "Reading"
---         ]
+--         ],
+--         "name": "Bob",
+--         "pets": {}
 --     },
 --     {
 --         "age": 51,
+--         "hobbies": [],
 --         "name": "Jim",
 --         "pets": {
 --             "Pluto": "Dog"
---         },
---         "hobbies": []
+--         }
 --     }
 -- ]
--- 
 -- 
 persons :: Value
 persons = 
