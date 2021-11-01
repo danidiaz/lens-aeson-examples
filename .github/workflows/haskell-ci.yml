@@ -1,0 +1,26 @@
+on: [push,pull_request]
+name: build
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        ghc: ['8.10.7']
+        cabal: ['3.4.0.0']
+        os: [ubuntu-latest]
+        exclude:
+          # GHC 8.8+ only works with cabal v3+
+          - ghc: 8.8.3
+            cabal: 2.4.1.0
+    name: Haskell GHC ${{ matrix.ghc }} sample
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Haskell
+        uses: haskell/actions/setup@v1
+        with:
+          ghc-version: ${{ matrix.ghc }}
+          cabal-version: ${{ matrix.cabal }}
+      # Writing the ghc environments seems to be necessary
+      # for the finicky doctest tests to work.
+      - run: cabal build --enable-tests --write-ghc-environment-files=always
+      - run: cabal test

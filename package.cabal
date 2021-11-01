@@ -1,10 +1,10 @@
+cabal-version:       3.4
 -- https://jpvillaisaza.github.io/2017/03/14/minimal-cabal-files/
 name:                lens-aeson-examples
 version:             1.0.0.0
 license:             MIT
 license-file:        LICENSE
 build-type:          Simple
-cabal-version:       >=2
 
 library
     exposed-modules:     
