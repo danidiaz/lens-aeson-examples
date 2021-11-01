@@ -191,6 +191,8 @@ filtered person objects.
 >>> persons^..values.filtered (has (key "hobbies".values._String.(only "Reading"<>only "Cooking"))).key "name"._String
 ["Alice","Bob"]
  
+(See the [Optics are Monoids](https://www.haskellforall.com/2021/09/optics-are-monoids.html) post by Gabriella Gonzalez.)
+
 Another way of saying the same, using the 'anyOf' combinator:
 
 >>> persons^..values.filtered (anyOf (key "hobbies".values._String) (\t -> t=="Reading" || t=="Cooking")).key "name"._String
